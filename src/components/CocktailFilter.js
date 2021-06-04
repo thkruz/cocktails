@@ -1,57 +1,50 @@
-import React, { useState, useMemo } from "react";
-import { debounce } from "lodash";
-import {
-  Paper,
-  Button,
-  Menu,
-  MenuItem,
-  TextField,
-  InputAdornment
-} from "@material-ui/core";
-import { getRules } from "../filterConfig";
-import { removeOrAddItemFromArray } from "../utilities/util";
-import { labelFor } from "../filterConfig";
-import { FilterChips, FilterDialog } from "./Filters";
-import { withStyles } from "@material-ui/core/styles";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { updateFilter, activateFilterDialog } from "../actions";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import SearchIcon from "@material-ui/icons/Search";
-import { filteredCocktailsSelector } from "../selectors";
-import pluralize from "pluralize";
-const styles = theme => ({
+import React, { useState, useMemo } from 'react';
+import { debounce } from 'lodash';
+import { Paper, Button, Menu, MenuItem, TextField, InputAdornment } from '@material-ui/core';
+import { getRules } from '../filterConfig';
+import { removeOrAddItemFromArray } from '../utilities/util';
+import { labelFor } from '../filterConfig';
+import { FilterChips, FilterDialog } from './Filters';
+import { withStyles } from '@material-ui/core/styles';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateFilter, activateFilterDialog } from '../actions';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import SearchIcon from '@material-ui/icons/Search';
+import { filteredCocktailsSelector } from '../selectors';
+import pluralize from 'pluralize';
+const styles = (theme) => ({
   filters: {
-    padding: theme.spacing(1, 0, 0, 0)
+    padding: theme.spacing(1, 0, 0, 0),
   },
   cocktailsCount: {
-    textTransform: "upperCase"
+    textTransform: 'upperCase',
   },
   filterButton: {
-    float: "right",
-    margin: theme.spacing(1)
+    float: 'right',
+    margin: theme.spacing(1),
   },
   closeButton: {
-    position: "absolute",
+    position: 'absolute',
     right: theme.spacing(1),
     top: theme.spacing(1),
-    color: theme.palette.grey[500]
+    color: theme.palette.grey[500],
   },
   cocktailCountContainer: {
     padding: theme.spacing(0.5),
-    fontWeight: "bold",
-    clear: "both",
-    textAlign: "center",
-    textTransform: "uppercase",
+    fontWeight: 'bold',
+    clear: 'both',
+    textAlign: 'center',
+    textTransform: 'uppercase',
     backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.getContrastText(theme.palette.secondary.light)
+    color: theme.palette.getContrastText(theme.palette.secondary.light),
   },
   searchField: {
     marginTop: 0,
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300
-  }
+    maxWidth: 240,
+  },
 });
 
 const CocktailFilter = ({
@@ -59,18 +52,18 @@ const CocktailFilter = ({
   filterOptions: { activeFilters, nameFilter },
   updateFilter,
   activateFilterDialog,
-  classes
+  classes,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const updateNameFilter = useMemo(
     () =>
-      debounce(searchText => {
+      debounce((searchText) => {
         updateFilter({
-          nameFilter: searchText
+          nameFilter: searchText,
         });
       }, 100),
-    [updateFilter]
+    [updateFilter],
   );
 
   function openFilterMenu(event) {
@@ -83,7 +76,7 @@ const CocktailFilter = ({
 
   function addFilter(filter) {
     updateFilter({
-      activeFilters: removeOrAddItemFromArray(filter, activeFilters)
+      activeFilters: removeOrAddItemFromArray(filter, activeFilters),
     });
     activateFilterDialog(filter);
     closeFilterMenu();
@@ -98,13 +91,13 @@ const CocktailFilter = ({
         placeholder="Start typing cocktail name..."
         className={classes.searchField}
         margin="normal"
-        onChange={e => updateNameFilter(e.target.value)}
+        onChange={(e) => updateNameFilter(e.target.value)}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
-          )
+          ),
         }}
       />
 
@@ -142,23 +135,23 @@ const CocktailFilter = ({
       <FilterDialog />
 
       <div className={classes.cocktailCountContainer}>
-        Showing {pluralize("cocktail", filteredCocktails.length, true)}
+        Showing {pluralize('cocktail', filteredCocktails.length, true)}
       </div>
     </Paper>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   filterOptions: state.filterOptions,
-  filteredCocktails: filteredCocktailsSelector(state)
+  filteredCocktails: filteredCocktailsSelector(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   updateFilter: bindActionCreators(updateFilter, dispatch),
-  activateFilterDialog: bindActionCreators(activateFilterDialog, dispatch)
+  activateFilterDialog: bindActionCreators(activateFilterDialog, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withStyles(styles)(CocktailFilter));

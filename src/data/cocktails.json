@@ -2,6 +2,7 @@
   {
     "iba": false,
     "name": "Hail Caesar",
+    "description": "Inspired by Julius Caesar",
     "colors": "#D88317",
     "glass": "martini",
     "category": "Military Themed",

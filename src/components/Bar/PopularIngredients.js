@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { countIngredients } from "../../utilities/cocktail.utils";
+import React from 'react';
+import { connect } from 'react-redux';
+import { countIngredients } from '../../utilities/cocktail.utils';
 import {
   Typography,
   Table,
@@ -8,28 +8,28 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  IconButton
-} from "@material-ui/core";
+  IconButton,
+} from '@material-ui/core';
 
-import AddIcon from "@material-ui/icons/Add";
-import { withStyles } from "@material-ui/core/styles";
-import { bindActionCreators } from "redux";
-import { addToBar } from "../../actions";
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/core/styles';
+import { bindActionCreators } from 'redux';
+import { addToBar } from '../../actions';
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: 25,
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
   },
 
   cocktailNameContainer: {
-    display: "flex"
-  }
+    display: 'flex',
+  },
 });
 
 const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
   const counts = countIngredients(allCocktails)
-    .filter(i => {
+    .filter((i) => {
       return bar.includes(i.name) === false;
     })
     .slice(0, 5);
@@ -39,54 +39,62 @@ const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
       <Typography variant="h3" className={classes.title} gutterBottom>
         Popular Ingredients
       </Typography>
-      <Typography component="p" paragraph>
-        These are popular ingredients not currently in your bar.
-      </Typography>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Ingredient</TableCell>
-            <TableCell align="right">Appearances</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {counts.map(row => (
-            <TableRow key={row.name}>
-              <TableCell
-                className={classes.cocktailNameContainer}
-                component="th"
-                scope="row"
-              >
-                <div>
-                  <span>{row.name}</span>
-                  <IconButton
-                    onClick={() => addToBar(row.name)}
-                    color="primary"
-                    aria-label="Add"
-                  >
-                    <AddIcon />
-                  </IconButton>
-                </div>
-              </TableCell>
-              <TableCell align="right">{row.count}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      {counts.length > 0 && (
+        <>
+          <Typography component="p" paragraph>
+            These are popular ingredients not currently in your bar.
+          </Typography>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Ingredient</TableCell>
+                <TableCell align="right">Appearances</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {counts.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell className={classes.cocktailNameContainer} component="th" scope="row">
+                    <div>
+                      <span>{row.name}</span>
+                      <IconButton
+                        onClick={() => addToBar(row.name)}
+                        color="primary"
+                        aria-label="Add"
+                      >
+                        <AddIcon />
+                      </IconButton>
+                    </div>
+                  </TableCell>
+                  <TableCell align="right">{row.count}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </>
+      )}
+      {counts.length === 0 && (
+        <>
+          <Typography component="p" paragraph>
+            That is one really well stocked bar! It looks like you have everything you would ever
+            need to make drinks.
+          </Typography>
+        </>
+      )}
     </div>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   bar: state.bar,
-  allCocktails: state.db.cocktails
+  allCocktails: state.db.cocktails,
 });
 
-const mapDispatchToProps = dispatch => ({
-  addToBar: bindActionCreators(addToBar, dispatch)
+const mapDispatchToProps = (dispatch) => ({
+  addToBar: bindActionCreators(addToBar, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(withStyles(styles)(PopularIngredients));

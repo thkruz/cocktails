@@ -11,6 +11,9 @@ import CocktailVariantList from './CocktailPage/CocktailVariantList';
 const fullHeight = '92vh';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.grey[100],
+  },
   cocktailDetail: {
     overflow: 'auto',
     [theme.breakpoints.up('sm')]: {

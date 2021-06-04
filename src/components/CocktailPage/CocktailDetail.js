@@ -14,22 +14,23 @@ const styles = (theme) => ({
   cocktailDetailPaper: {
     padding: theme.spacing(2),
   },
-  cocktailTitle: {
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '3rem',
-    },
-    [theme.breakpoints.up('md')]: {
-      fontSize: '4rem',
-    },
-    [theme.breakpoints.up('lg')]: {
-      fontSize: '5rem',
-    },
-  },
+  // cocktailTitle: {
+  //   [theme.breakpoints.down('xs')]: {
+  //     fontSize: '3rem',
+  //   },
+  //   [theme.breakpoints.up('md')]: {
+  //     fontSize: '4rem',
+  //   },
+  //   [theme.breakpoints.up('lg')]: {
+  //     fontSize: '5rem',
+  //   },
+  // },
 });
 
 const CocktailPage = ({ cocktail, allGlasses, classes }) => {
   const {
     name,
+    description,
     ingredients,
     preparation,
     category,
@@ -42,9 +43,7 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
 
   return (
     <>
-      <Typography className={classes.cocktailTitle} variant="h1">
-        {name}
-      </Typography>
+      <Typography variant="h2">{name}</Typography>
 
       <div className={classes.definitions}>
         <Definition title="Category" description={category} />
@@ -57,6 +56,16 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
         )}
       </div>
       <Paper className={classes.cocktailDetailPaper}>
+        {description && (
+          <>
+            <Typography variant="h6">Description:</Typography>
+            <br />
+            <Typography component="p">{description}</Typography>
+            <br />
+          </>
+        )}
+        <Typography variant="h6">Recipe:</Typography>
+        <br />
         <Typography component="ul" gutterBottom>
           <>
             {ingredients.map((ingredient, idx) => {
@@ -68,6 +77,8 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
             })}
           </>
         </Typography>
+        <br />
+        <Typography variant="h6">Preparation:</Typography>
         <br />
         <Typography component="p">{preparation}</Typography>
       </Paper>
