@@ -139,8 +139,22 @@
     "taste": "sweet"
   },
   "Gin": {
-    "abv": 40,
-    "taste": null
+    "Generic": {
+      "Generic": {
+        "abv": 40,
+        "taste": null
+      }
+    },
+    "London Dry": {
+      "Generic": {
+        "abv": 40,
+        "taste": "juniper"
+      },
+      "Beefeaters": {
+        "abv": 40,
+        "taste": null
+      }
+    }
   },
   "Ginger Ale": {
     "abv": 0,
@@ -159,6 +173,14 @@
     "taste": "sweet",
     "vegan": false
   },
+  "Italicus": {
+    "Generic": {
+      "Generic": {
+        "abv": 40,
+        "taste": "bergamot"
+      }
+    }    
+  },
   "Kirsch": {
     "abv": 40,
     "taste": null
@@ -168,8 +190,12 @@
     "taste": "sour"
   },
   "Lillet Blonde": {
-    "abv": 15,
-    "taste": null
+    "Generic": {
+      "Generic": {
+        "abv": 15,
+        "taste": null
+      }
+    }    
   },
   "Lime": {
     "abv": 0,

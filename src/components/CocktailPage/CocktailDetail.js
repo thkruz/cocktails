@@ -1,30 +1,30 @@
-import React from "react";
-import { Typography, Paper } from "@material-ui/core";
-import { allGlassesSelector } from "../../selectors";
-import IngredientDetail from "../IngredientDetail";
-import Definition from "./Definition";
-import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
+import React from 'react';
+import { Typography, Paper } from '@material-ui/core';
+import { allGlassesSelector } from '../../selectors';
+import IngredientDetail from '../IngredientDetail';
+import Definition from './Definition';
+import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
-const styles = theme => ({
+const styles = (theme) => ({
   definitions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(5)
+    marginBottom: theme.spacing(5),
   },
   cocktailDetailPaper: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   cocktailTitle: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "3rem"
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3rem',
     },
-    [theme.breakpoints.up("md")]: {
-      fontSize: "4rem"
+    [theme.breakpoints.up('md')]: {
+      fontSize: '4rem',
     },
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "5rem"
-    }
-  }
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '5rem',
+    },
+  },
 });
 
 const CocktailPage = ({ cocktail, allGlasses, classes }) => {
@@ -37,7 +37,7 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
     vegan,
     garnish,
     enrichment,
-    enriched
+    enriched,
   } = cocktail;
 
   return (
@@ -48,18 +48,12 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
 
       <div className={classes.definitions}>
         <Definition title="Category" description={category} />
-        <Definition
-          title="Glass"
-          description={allGlasses[glass.toString()].name}
-        />
+        <Definition title="Glass" description={allGlasses[glass.toString()].name} />
         <Definition title="Garnish" description={garnish} />
-        {!vegan && <Definition title="Vegan" description={"Non-vegan"} />}
+        {!vegan && <Definition title="Vegan" description={'Non-vegan'} />}
 
         {enriched && enrichment.ibaCategory && (
-          <Definition
-            title="IBA Category"
-            description={enrichment.ibaCategory}
-          />
+          <Definition title="IBA Category" description={enrichment.ibaCategory} />
         )}
       </div>
       <Paper className={classes.cocktailDetailPaper}>
@@ -81,8 +75,8 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  allGlasses: allGlassesSelector(state)
+const mapStateToProps = (state) => ({
+  allGlasses: allGlassesSelector(state),
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(CocktailPage));
