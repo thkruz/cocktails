@@ -1,44 +1,28 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-
-import {
-  Typography,
-  Paper,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormLabel,
-  Switch
-} from "@material-ui/core";
-
-import { bindActionCreators } from "redux";
-import { updateSettings, togglePride, toggleLingo } from "../actions";
-import { connect } from "react-redux";
-import { colors } from "../theme";
-import capitalize from "lodash/capitalize";
-import keys from "lodash/keys";
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography, Paper, Radio, RadioGroup, FormControlLabel, FormLabel, Switch } from '@material-ui/core';
+import { bindActionCreators } from 'redux';
+import { updateSettings, togglePride, toggleLingo } from '../actions';
+import { connect } from 'react-redux';
+import { colors } from '../theme';
+import capitalize from 'lodash/capitalize';
+import keys from 'lodash/keys';
 
 const styles = theme => ({
   content: {
     marginBottom: theme.spacing(1),
-    padding: theme.spacing(1, 2)
+    padding: theme.spacing(1, 2),
   },
   root: {
     ...theme.mixins.gutters,
-    justifyContent: "center"
+    justifyContent: 'center',
   },
   formLabel: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 });
 
-const Settings = ({
-  classes,
-  settings,
-  updateSettings,
-  togglePride,
-  toggleLingo
-}) => (
+const Settings = ({ classes, settings, updateSettings, togglePride, toggleLingo }) => (
   <div className={classes.root}>
     <Paper className={classes.content}>
       <Typography variant="h2" gutterBottom>
@@ -58,14 +42,7 @@ const Settings = ({
         }}
       >
         {keys(colors).map(color => {
-          return (
-            <FormControlLabel
-              value={color}
-              key={color}
-              control={<Radio />}
-              label={capitalize(color)}
-            />
-          );
+          return <FormControlLabel value={color} key={color} control={<Radio />} label={capitalize(color)} />;
         })}
       </RadioGroup>
 
@@ -81,7 +58,7 @@ const Settings = ({
           updateSettings({ browserMode: event.target.value });
         }}
       >
-        {["card", "table"].map(browserMode => {
+        {['card', 'table'].map(browserMode => {
           return (
             <FormControlLabel
               value={browserMode}
@@ -105,15 +82,8 @@ const Settings = ({
           updateSettings({ theme: event.target.value });
         }}
       >
-        {["light", "dark"].map(theme => {
-          return (
-            <FormControlLabel
-              value={theme}
-              key={theme}
-              control={<Radio />}
-              label={capitalize(theme)}
-            />
-          );
+        {['light', 'dark'].map(theme => {
+          return <FormControlLabel value={theme} key={theme} control={<Radio />} label={capitalize(theme)} />;
         })}
       </RadioGroup>
 
@@ -129,15 +99,8 @@ const Settings = ({
           updateSettings({ units: event.target.value });
         }}
       >
-        {["cl", "ml", "oz", "parts"].map(unit => {
-          return (
-            <FormControlLabel
-              value={unit}
-              key={unit}
-              control={<Radio />}
-              label={unit}
-            />
-          );
+        {['cl', 'ml', 'oz', 'parts'].map(unit => {
+          return <FormControlLabel value={unit} key={unit} control={<Radio />} label={unit} />;
         })}
       </RadioGroup>
 
@@ -178,13 +141,13 @@ const Settings = ({
 );
 
 const mapStateToProps = state => ({
-  settings: state.settings
+  settings: state.settings,
 });
 
 const mapDispatchToProps = dispatch => ({
   updateSettings: bindActionCreators(updateSettings, dispatch),
   togglePride: bindActionCreators(togglePride, dispatch),
-  toggleLingo: bindActionCreators(toggleLingo, dispatch)
+  toggleLingo: bindActionCreators(toggleLingo, dispatch),
 });
 
 export default connect(

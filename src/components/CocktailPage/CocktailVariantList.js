@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import CocktailVariant from './CocktailVariant';
 import CocktailVariantLocal from './CocktailVariantLocal';
 
-const styles = (theme) => ({
+const styles = theme => ({
   divider: {
     margin: theme.spacing(3, 0),
   },
@@ -15,8 +15,7 @@ const CocktailVariantList = ({ cocktail, classes }) => {
   let variants = cocktail.variants || [];
 
   // If no local variants or encrichment variants then stop
-  if (variants.length === 0 && (!enriched || !enrichment.variants || !enrichment.variants.length))
-    return null;
+  if (variants.length === 0 && (!enriched || !enrichment.variants || !enrichment.variants.length)) return null;
 
   return (
     <>
@@ -37,9 +36,7 @@ const CocktailVariantList = ({ cocktail, classes }) => {
                 </React.Fragment>
               );
             })}
-          {(enriched &&
-            enrichment.variants &&
-            enrichment.variants.length > 0 &&
+          {(enrichment?.variants?.length > 0 &&
             enrichment.variants.map((variant, idx) => {
               return (
                 <React.Fragment key={variant.name}>

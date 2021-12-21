@@ -10,7 +10,7 @@ const styles = {
   },
 };
 
-export function getIngredientAndLabel(allIngredients, item) {
+export const getIngredientAndLabel = (allIngredients, item) => {
   // Simple Ingredient
 
   if (typeof allIngredients[item.ingredient]['Generic'] === 'undefined') {
@@ -45,7 +45,7 @@ export function getIngredientAndLabel(allIngredients, item) {
     ingredient: ingredientByBrand,
     label: label,
   };
-}
+};
 
 const IngredientDetail = ({ item, units, useLingo, allIngredients, classes }) => {
   if (item.special) return <span>{item.special}</span>;
@@ -61,18 +61,14 @@ const IngredientDetail = ({ item, units, useLingo, allIngredients, classes }) =>
   return (
     <span>
       {createMeasurementString(item.amount, item.unit, units, useLingo)}{' '}
-      <Tooltip
-        className={classes.tooltip}
-        title={compact(toolTipContent).join(', ')}
-        placement="top"
-      >
+      <Tooltip className={classes.tooltip} title={compact(toolTipContent).join(', ')} placement="top">
         <strong>{item.label || label}</strong>
       </Tooltip>
     </span>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   allIngredients: state.db.ingredients,
   units: state.settings.units,
   useLingo: state.settings.lingo,

@@ -1,19 +1,10 @@
-import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-
-import {
-  DialogContent,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  Checkbox
-} from "@material-ui/core";
-
-import { allCategoriesSelector } from "../../selectors";
-import { updateFilter } from "../../actions";
-import { removeOrAddItemFromArray } from "../../utilities/util";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { DialogContent, FormGroup, FormLabel, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
+import { allCategoriesSelector } from '../../selectors';
+import { updateFilter } from '../../actions';
+import { removeOrAddItemFromArray } from '../../utilities/util';
 
 const CategoryFilter = ({ categories, allCategories, updateFilter }) => {
   return (
@@ -30,10 +21,7 @@ const CategoryFilter = ({ categories, allCategories, updateFilter }) => {
                     checked={categories.includes(category)}
                     onChange={() =>
                       updateFilter({
-                        categories: removeOrAddItemFromArray(
-                          category,
-                          categories
-                        )
+                        categories: removeOrAddItemFromArray(category, categories),
                       })
                     }
                     value="checkedB"
@@ -52,11 +40,11 @@ const CategoryFilter = ({ categories, allCategories, updateFilter }) => {
 
 const mapStateToProps = state => ({
   categories: state.filterOptions.categories,
-  allCategories: allCategoriesSelector(state)
+  allCategories: allCategoriesSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateFilter: bindActionCreators(updateFilter, dispatch)
+  updateFilter: bindActionCreators(updateFilter, dispatch),
 });
 
 export default connect(

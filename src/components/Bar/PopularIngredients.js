@@ -1,22 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { countIngredients } from '../../utilities/cocktail.utils';
-import {
-  Typography,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  IconButton,
-} from '@material-ui/core';
+import { Typography, Table, TableHead, TableBody, TableRow, TableCell, IconButton } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
 import { addToBar } from '../../actions';
 
-const styles = (theme) => ({
+const styles = theme => ({
   title: {
     fontSize: 25,
     margin: theme.spacing(1, 0),
@@ -29,7 +21,7 @@ const styles = (theme) => ({
 
 const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
   const counts = countIngredients(allCocktails)
-    .filter((i) => {
+    .filter(i => {
       return bar.includes(i.name) === false;
     })
     .slice(0, 5);
@@ -52,16 +44,12 @@ const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {counts.map((row) => (
+              {counts.map(row => (
                 <TableRow key={row.name}>
                   <TableCell className={classes.cocktailNameContainer} component="th" scope="row">
                     <div>
                       <span>{row.name}</span>
-                      <IconButton
-                        onClick={() => addToBar(row.name)}
-                        color="primary"
-                        aria-label="Add"
-                      >
+                      <IconButton onClick={() => addToBar(row.name)} color="primary" aria-label="Add">
                         <AddIcon />
                       </IconButton>
                     </div>
@@ -76,8 +64,7 @@ const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
       {counts.length === 0 && (
         <>
           <Typography component="p" paragraph>
-            That is one really well stocked bar! It looks like you have everything you would ever
-            need to make drinks.
+            That is one really well stocked bar! It looks like you have everything you would ever need to make drinks.
           </Typography>
         </>
       )}
@@ -85,16 +72,16 @@ const PopularIngredients = ({ allCocktails, bar, addToBar, classes }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   bar: state.bar,
   allCocktails: state.db.cocktails,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   addToBar: bindActionCreators(addToBar, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(withStyles(styles)(PopularIngredients));

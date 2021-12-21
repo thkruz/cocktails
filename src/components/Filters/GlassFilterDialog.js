@@ -1,21 +1,12 @@
-import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { map } from "lodash";
-import GlassIcon from "../GlassIcon";
-
-import {
-  DialogContent,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  Checkbox
-} from "@material-ui/core";
-
-import { allGlassesSelector } from "../../selectors";
-import { updateFilter } from "../../actions";
-import { removeOrAddItemFromArray } from "../../utilities/util";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { map } from 'lodash';
+import GlassIcon from '../GlassIcon';
+import { DialogContent, FormGroup, FormLabel, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
+import { allGlassesSelector } from '../../selectors';
+import { updateFilter } from '../../actions';
+import { removeOrAddItemFromArray } from '../../utilities/util';
 
 const GlassFilter = ({ glasses, allGlasses, updateFilter }) => {
   return (
@@ -32,7 +23,7 @@ const GlassFilter = ({ glasses, allGlasses, updateFilter }) => {
                     checked={glasses.includes(glassKey)}
                     onChange={() =>
                       updateFilter({
-                        glasses: removeOrAddItemFromArray(glassKey, glasses)
+                        glasses: removeOrAddItemFromArray(glassKey, glasses),
                       })
                     }
                     value="checkedB"
@@ -56,11 +47,11 @@ const GlassFilter = ({ glasses, allGlasses, updateFilter }) => {
 
 const mapStateToProps = state => ({
   glasses: state.filterOptions.glasses,
-  allGlasses: allGlassesSelector(state)
+  allGlasses: allGlassesSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateFilter: bindActionCreators(updateFilter, dispatch)
+  updateFilter: bindActionCreators(updateFilter, dispatch),
 });
 
 export default connect(

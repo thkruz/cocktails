@@ -1,32 +1,23 @@
-import React from "react";
-import capitalize from "lodash/capitalize";
-import { withStyles } from "@material-ui/core/styles";
-import ConditionalHidden from "./ConditionalHidden";
-import CocktailActions from "./CocktailActions";
-import {
-  TableRow,
-  TableHead,
-  TableContainer,
-  TableCell,
-  TableBody,
-  Table
-} from "@material-ui/core";
-import CocktailAvatar from "./CocktailAvatar";
+import React from 'react';
+import capitalize from 'lodash/capitalize';
+import { withStyles } from '@material-ui/core/styles';
+import ConditionalHidden from './ConditionalHidden';
+import CocktailActions from './CocktailActions';
+import { TableRow, TableHead, TableContainer, TableCell, TableBody, Table } from '@material-ui/core';
+import CocktailAvatar from './CocktailAvatar';
 
-const styles = () => {
-  return {
-    root: {
-      width: "100%"
-    }
-  };
-};
+const styles = () => ({
+  root: {
+    width: '100%',
+  },
+});
 
 const TableView = ({ classes, displayedCocktails }) => {
   const columns = [
     {
-      name: "name"
+      name: 'name',
     },
-    { name: "category", hideOnXS: true }
+    { name: 'category', hideOnXS: true },
   ];
 
   return (
@@ -51,10 +42,7 @@ const TableView = ({ classes, displayedCocktails }) => {
               </TableCell>
               {columns.map(column => {
                 return (
-                  <ConditionalHidden
-                    key={column.name}
-                    hideOnXS={column.hideOnXS}
-                  >
+                  <ConditionalHidden key={column.name} hideOnXS={column.hideOnXS}>
                     <TableCell>{cocktail[column.name]}</TableCell>
                   </ConditionalHidden>
                 );

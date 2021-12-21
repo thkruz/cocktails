@@ -1,19 +1,19 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { makeableCocktailsSelector } from "../../selectors";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { makeableCocktailsSelector } from '../../selectors';
 
 const styles = theme => ({
   title: {
     fontSize: 25,
-    margin: theme.spacing(1, 0)
+    margin: theme.spacing(1, 0),
   },
   list: {
-    maxHeight: "20rem",
-    overflowY: "scroll"
-  }
+    maxHeight: '20rem',
+    overflowY: 'scroll',
+  },
 });
 
 const MakeableCocktails = ({ makeableCocktails, classes }) => {
@@ -27,12 +27,7 @@ const MakeableCocktails = ({ makeableCocktails, classes }) => {
       </Typography>
       <List className={classes.list}>
         {makeableCocktails.map(cocktail => (
-          <ListItem
-            button
-            key={cocktail.name}
-            component={Link}
-            to={`/cocktails/${cocktail.slug}`}
-          >
+          <ListItem button key={cocktail.name} component={Link} to={`/cocktails/${cocktail.slug}`}>
             <ListItemText primary={cocktail.name} />
           </ListItem>
         ))}
@@ -42,7 +37,7 @@ const MakeableCocktails = ({ makeableCocktails, classes }) => {
 };
 
 const mapStateToProps = state => ({
-  makeableCocktails: makeableCocktailsSelector(state)
+  makeableCocktails: makeableCocktailsSelector(state),
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(MakeableCocktails));

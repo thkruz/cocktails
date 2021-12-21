@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getIngredientAndLabel } from '../IngredientDetail';
 import { createMeasurementString } from '../../utilities/cocktail.utils';
 
-const styles = (theme) => ({
+const styles = theme => ({
   listItem: {
     backgroundColor: theme.palette.background.paper,
   },
@@ -17,30 +17,19 @@ const styles = (theme) => ({
   preparation: {},
 });
 
-function formatIngredients(ingredients, allIngredients, units, useLingo) {
+const formatIngredients = (ingredients, allIngredients, units, useLingo) => {
   let ingredientsString = '';
 
-  for (let i = 0; i < ingredients.length; i++) {
-    const ingredient = ingredients[i];
-    if (i < ingredients.length - 1) {
-      ingredientsString += `${createMeasurementString(
-        ingredient.amount,
-        ingredient.unit,
-        units,
-        useLingo,
-      )} of ${getIngredientAndLabel(allIngredients, ingredient).label} - `;
-    } else {
-      ingredientsString += `${createMeasurementString(
-        ingredient.amount,
-        ingredient.unit,
-        units,
-        useLingo,
-      )} of ${getIngredientAndLabel(allIngredients, ingredient).label}`;
-    }
-  }
+  ingredients.forEach(ingredient => {
+    const { amount, unit } = ingredient;
+    const measurementStr = createMeasurementString(amount, unit, units, useLingo);
+    const ingredientAndLabel = getIngredientAndLabel(allIngredients, ingredient);
+    ingredientsString += `${measurementStr} of ${ingredientAndLabel.label} - `;
+  });
 
-  return ingredientsString;
-}
+  // Remove trailing ' - '
+  return ingredientsString.slice(0, -3);
+};
 
 const CocktailVariantLocal = ({
   cocktail: { name, image, category, glass, preparation, ingredients } = {},
@@ -57,9 +46,7 @@ const CocktailVariantLocal = ({
       primary={name}
       secondary={
         <span>
-          <span className={classes.ingredients}>
-            {formatIngredients(ingredients, allIngredients, units, useLingo)}
-          </span>
+          <span className={classes.ingredients}>{formatIngredients(ingredients, allIngredients, units, useLingo)}</span>
 
           <span className={classes.preparation}>{preparation}</span>
         </span>
@@ -68,7 +55,7 @@ const CocktailVariantLocal = ({
   </ListItem>
 );
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   allIngredients: state.db.ingredients,
   units: state.settings.units,
   useLingo: state.settings.lingo,

@@ -1,5 +1,5 @@
-import React from "react";
-import Hidden from "@material-ui/core/Hidden";
+import React from 'react';
+import Hidden from '@material-ui/core/Hidden';
 
 const ConditionalHidden = ({ hideOnXS, children }) => {
   if (!hideOnXS) return children;

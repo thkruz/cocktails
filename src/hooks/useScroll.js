@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 // Hook for getting the vertical scroll position
-function useScroll() {
+const useScroll = () => {
   const [scrollPos, setScrollPos] = useState(0);
 
   const handleScroll = () => {
@@ -9,11 +9,11 @@ function useScroll() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return scrollPos;
-}
+};
 
 export default useScroll;

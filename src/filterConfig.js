@@ -27,13 +27,13 @@
  * in order to actually apply the filter.
  *
  */
-import { keys, get } from "lodash";
+import { keys, get } from 'lodash';
 
 import {
   GlassFilterDialog,
   CategoryFilterDialog,
-  IngredientFilterDialog
-} from "./components/Filters";
+  IngredientFilterDialog,
+} from './components/Filters';
 
 /**
  * Main filter config object
@@ -41,84 +41,84 @@ import {
 const filterConfig = {
   byIngredient: {
     dialogComponent: IngredientFilterDialog,
-    label: "By Ingredient...",
+    label: 'By Ingredient...',
     buildFilter: ({ ingredientsRule, ingredients }) => ({
       rule: ingredientsRule,
-      ingredients
-    })
+      ingredients,
+    }),
   },
   byCategory: {
     dialogComponent: CategoryFilterDialog,
-    label: "By Category...",
+    label: 'By Category...',
     buildFilter: ({ categories }) => ({
-      rule: "inCategory",
-      categories
-    })
+      rule: 'inCategory',
+      categories,
+    }),
   },
   byGlass: {
     dialogComponent: GlassFilterDialog,
-    label: "By Glass...",
+    label: 'By Glass...',
     buildFilter: ({ glasses }) => ({
-      rule: "inGlass",
-      glasses
-    })
+      rule: 'inGlass',
+      glasses,
+    }),
   },
   barOnly: {
-    label: "Makeable from Bar",
+    label: 'Makeable from Bar',
     buildFilter: (_, { bar }) => ({
-      rule: "makeableFrom",
-      ingredients: bar
-    })
+      rule: 'makeableFrom',
+      ingredients: bar,
+    }),
   },
   favouritesOnly: {
-    label: "Favourites only",
+    label: 'Favourites only',
     buildFilter: (_, { favourites }) => ({
-      rule: "isFavourite",
-      favourites
-    })
+      rule: 'isFavourite',
+      favourites,
+    }),
   },
   veganOnly: {
-    label: "Vegan only",
+    label: 'Vegan only',
     buildFilter: () => ({
-      rule: "mustHaveTruthyProperty",
-      property: "vegan"
-    })
+      rule: 'mustHaveTruthyProperty',
+      property: 'vegan',
+    }),
   },
   ibaOnly: {
-    label: "IBA only",
+    label: 'IBA only',
     buildFilter: () => ({
-      rule: "mustHaveTruthyProperty",
-      property: "iba"
-    })
-  }
+      rule: 'mustHaveTruthyProperty',
+      property: 'iba',
+    }),
+  },
 };
 
-function getFilterConfig(filterRule) {
+const getFilterConfig = (filterRule) => {
   return filterConfig[filterRule && filterRule.toString()];
-}
+};
 
 // Fishes out the label for a filter rule (if there is one)
-export function labelFor(filterRule) {
-  return get(getFilterConfig(filterRule), "label") || filterRule;
-}
+export const labelFor = (filterRule) => {
+  return get(getFilterConfig(filterRule), 'label') || filterRule;
+};
 
 // Fishes out the custom dialog for a filter rule (if there is one)
-export function dialogFor(filterRule) {
-  return get(getFilterConfig(filterRule), "dialogComponent");
-}
+export const dialogFor = (filterRule) => {
+  return get(getFilterConfig(filterRule), 'dialogComponent');
+};
 
 // Returns true if this filter rule has a custom dialog
-export function hasDialog(filterRule) {
+export const hasDialog = (filterRule) => {
   return !!dialogFor(filterRule);
-}
+};
 
 // HoF for building the actual filters that will be applied from
 // user options.
-export function buildFilter(filterRule) {
-  return get(getFilterConfig(filterRule), "buildFilter");
-}
+export const buildFilter = (filterRule) => {
+  return get(getFilterConfig(filterRule), 'buildFilter');
+};
 
 // Returns a list of the rules
-export function getRules() {
+export const getRules = () => {
   return keys(filterConfig);
-}
+};

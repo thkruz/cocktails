@@ -1,22 +1,22 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography, Paper, Grid } from "@material-ui/core";
-import PopularIngredients from "./Bar/PopularIngredients";
-import CocktailGauge from "./Bar/CocktailGauge";
-import MakeableCocktails from "./Bar/MakeableCocktails";
-import IngredientPicker from "./IngredientPicker";
-import { bindActionCreators } from "redux";
-import { setBar } from "../actions";
-import { connect } from "react-redux";
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography, Paper, Grid } from '@material-ui/core';
+import PopularIngredients from './Bar/PopularIngredients';
+import CocktailGauge from './Bar/CocktailGauge';
+import MakeableCocktails from './Bar/MakeableCocktails';
+import IngredientPicker from './IngredientPicker';
+import { bindActionCreators } from 'redux';
+import { setBar } from '../actions';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   explanation: {
-    padding: theme.spacing(1, 2)
+    padding: theme.spacing(1, 2),
   },
   root: {
     ...theme.mixins.gutters,
-    justifyContent: "center"
-  }
+    justifyContent: 'center',
+  },
 });
 
 const Bar = ({ classes, bar, setBar }) => {
@@ -57,11 +57,11 @@ const Bar = ({ classes, bar, setBar }) => {
 
 const mapStateToProps = state => ({
   bar: state.bar,
-  allCocktails: state.db.cocktails
+  allCocktails: state.db.cocktails,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setBar: bindActionCreators(setBar, dispatch)
+  setBar: bindActionCreators(setBar, dispatch),
 });
 
 export default connect(

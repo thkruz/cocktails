@@ -1,24 +1,11 @@
-import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { DialogContent, Radio, RadioGroup, FormControl, FormControlLabel, Button } from '@material-ui/core';
+import IngredientPicker from '../IngredientPicker';
+import { updateFilter } from '../../actions';
 
-import {
-  DialogContent,
-  Radio,
-  RadioGroup,
-  FormControl,
-  FormControlLabel,
-  Button
-} from "@material-ui/core";
-
-import IngredientPicker from "../IngredientPicker";
-import { updateFilter } from "../../actions";
-
-const GlassFilter = ({
-  ingredientsRule,
-  selectedIngredients,
-  updateFilter
-}) => {
+const GlassFilter = ({ ingredientsRule, selectedIngredients, updateFilter }) => {
   return (
     <DialogContent>
       <RadioGroup value={ingredientsRule}>
@@ -26,19 +13,13 @@ const GlassFilter = ({
           value="mustInclude"
           control={<Radio />}
           label="Each cocktail must Include all of the following..."
-          onClick={e =>
-            ingredientsRule !== "mustInclude" &&
-            updateFilter({ ingredientsRule: "mustInclude" })
-          }
+          onClick={e => ingredientsRule !== 'mustInclude' && updateFilter({ ingredientsRule: 'mustInclude' })}
         />
         <FormControlLabel
           value="canInclude"
           control={<Radio />}
           label="Show me cocktails that include any of the following..."
-          onClick={e =>
-            ingredientsRule !== "canInclude" &&
-            updateFilter({ ingredientsRule: "canInclude" })
-          }
+          onClick={e => ingredientsRule !== 'canInclude' && updateFilter({ ingredientsRule: 'canInclude' })}
         />
       </RadioGroup>
 
@@ -64,11 +45,11 @@ const GlassFilter = ({
 
 const mapStateToProps = state => ({
   selectedIngredients: state.filterOptions.ingredients,
-  ingredientsRule: state.filterOptions.ingredientsRule
+  ingredientsRule: state.filterOptions.ingredientsRule,
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateFilter: bindActionCreators(updateFilter, dispatch)
+  updateFilter: bindActionCreators(updateFilter, dispatch),
 });
 
 export default connect(

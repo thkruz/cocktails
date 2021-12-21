@@ -7,7 +7,7 @@ import Settings from './components/Settings';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Topbar from './components/Topbar';
 
-function App() {
+const App = () => {
   return (
     <Theme>
       <Router>
@@ -17,11 +17,12 @@ function App() {
         }
         <Route exact path={['/', '/cocktails']} component={CocktailBrowser} />
         <Route path={'/cocktails/:slug'} component={CocktailPage} />
+        <Route path="/about" component={() => <div>About</div>} />
         <Route path="/my-bar" component={Bar} />
         <Route path="/settings" component={Settings} />
       </Router>
     </Theme>
   );
-}
+};
 
 export default App;

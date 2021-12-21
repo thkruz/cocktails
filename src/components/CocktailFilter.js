@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { debounce } from 'lodash';
 import { Paper, Button, Menu, MenuItem, TextField, InputAdornment } from '@material-ui/core';
-import { getRules } from '../filterConfig';
+import { getRules, labelFor } from '../filterConfig';
 import { removeOrAddItemFromArray } from '../utilities/util';
-import { labelFor } from '../filterConfig';
 import { FilterChips, FilterDialog } from './Filters';
 import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
@@ -13,7 +12,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
 import { filteredCocktailsSelector } from '../selectors';
 import pluralize from 'pluralize';
-const styles = (theme) => ({
+const styles = theme => ({
   filters: {
     padding: theme.spacing(1, 0, 0, 0),
   },
@@ -58,12 +57,12 @@ const CocktailFilter = ({
 
   const updateNameFilter = useMemo(
     () =>
-      debounce((searchText) => {
+      debounce(searchText => {
         updateFilter({
           nameFilter: searchText,
         });
       }, 100),
-    [updateFilter],
+    [updateFilter]
   );
 
   function openFilterMenu(event) {
@@ -91,7 +90,7 @@ const CocktailFilter = ({
         placeholder="Start typing cocktail name..."
         className={classes.searchField}
         margin="normal"
-        onChange={(e) => updateNameFilter(e.target.value)}
+        onChange={e => updateNameFilter(e.target.value)}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -111,20 +110,10 @@ const CocktailFilter = ({
         Add Filter
       </Button>
 
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={closeFilterMenu}
-      >
+      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={closeFilterMenu}>
         {getRules().map((menuOption, idx) => {
           return (
-            <MenuItem
-              disabled={activeFilters.includes(menuOption)}
-              key={idx}
-              onClick={() => addFilter(menuOption)}
-            >
+            <MenuItem disabled={activeFilters.includes(menuOption)} key={idx} onClick={() => addFilter(menuOption)}>
               {labelFor(menuOption)}
             </MenuItem>
           );
@@ -141,17 +130,17 @@ const CocktailFilter = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   filterOptions: state.filterOptions,
   filteredCocktails: filteredCocktailsSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   updateFilter: bindActionCreators(updateFilter, dispatch),
   activateFilterDialog: bindActionCreators(activateFilterDialog, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(withStyles(styles)(CocktailFilter));

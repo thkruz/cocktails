@@ -1,34 +1,33 @@
-import produce from "immer";
-import { loadPersistedState } from "../utilities/persistence";
-import { hasDialog } from "../filterConfig";
-
-import * as actionTypes from "../actionTypes";
+import produce from 'immer';
+import { loadPersistedState } from '../utilities/persistence';
+import { hasDialog } from '../filterConfig';
+import * as actionTypes from '../actionTypes';
 
 const defaultState = {
   db: {
     cocktails: [],
     ingredients: [],
-    glasses: []
+    glasses: [],
   },
   filterOptions: {
     activeFilters: [],
     activeDialog: null,
     ingredients: [],
-    ingredientsRule: "mustInclude",
+    ingredientsRule: 'mustInclude',
     barOnly: false,
     categories: [],
-    glasses: []
+    glasses: [],
   },
   bar: [],
   favourites: [],
   settings: {
-    theme: "light",
-    color: "indigo",
-    browserMode: "card",
-    units: "cl",
+    theme: 'light',
+    color: 'indigo',
+    browserMode: 'card',
+    units: 'cl',
     pride: false,
-    lingo: false
-  }
+    lingo: false,
+  },
 };
 
 // Parts of the initial state will be from our persistence layer.
@@ -39,7 +38,7 @@ const initialState = produce({ ...defaultState, ...persistedState }, draft => {
   draft.settings = {
     ...defaultState.settings,
     ...draft.settings,
-    ...(persistedState ? persistedState.settings : null)
+    ...(persistedState ? persistedState.settings : null),
   };
 });
 
@@ -65,8 +64,7 @@ export default (state = initialState, action) =>
         draft.filterOptions = { ...draft.filterOptions, ...action.payload };
         break;
       case actionTypes.ACTIVATE_FILTER_DIALOG:
-        draft.filterOptions.activeDialog =
-          action.payload && hasDialog(action.payload) ? action.payload : null;
+        draft.filterOptions.activeDialog = action.payload && hasDialog(action.payload) ? action.payload : null;
         break;
       case actionTypes.CLOSE_FILTER_DIALOG:
         draft.filterOptions.activeDialog = null;
@@ -87,29 +85,21 @@ export default (state = initialState, action) =>
         draft.bar = [...new Set([...draft.bar, action.payload])];
         break;
       case actionTypes.START_ENRICH_COCKTAIL:
-        draft.db.cocktails.find(
-          c => c.name === action.payload
-        ).enriching = true;
+        draft.db.cocktails.find(c => c.name === action.payload).enriching = true;
         break;
       case actionTypes.FAIL_ENRICH_COCKTAIL:
-        Object.assign(
-          draft.db.cocktails.find(c => c.name === action.payload.cocktailName),
-          {
-            enriching: false,
-            enrichmentFailed: true,
-            enrichmentFailedError: action.payload.error.message
-          }
-        );
+        Object.assign(draft.db.cocktails.find(c => c.name === action.payload.cocktailName), {
+          enriching: false,
+          enrichmentFailed: true,
+          enrichmentFailedError: action.payload.error.message,
+        });
         break;
       case actionTypes.FINISH_ENRICH_COCKTAIL:
-        Object.assign(
-          draft.db.cocktails.find(c => c.name === action.payload.cocktailName),
-          {
-            enriching: false,
-            enriched: true,
-            enrichment: action.payload.enrichment
-          }
-        );
+        Object.assign(draft.db.cocktails.find(c => c.name === action.payload.cocktailName), {
+          enriching: false,
+          enriched: true,
+          enrichment: action.payload.enrichment,
+        });
         break;
       default:
     }

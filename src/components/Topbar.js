@@ -1,31 +1,32 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-import GlassIcon from "./GlassIcon";
-import DrinkIcon from "@material-ui/icons/LocalDrink";
-import SearchIcon from "@material-ui/icons/Search";
-import SettingsIcon from "@material-ui/icons/Settings";
-import Hidden from "@material-ui/core/Hidden";
-import { withStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import GlassIcon from './GlassIcon';
+import DrinkIcon from '@material-ui/icons/LocalDrink';
+import InfoIcon from '@material-ui/icons/Info';
+import SearchIcon from '@material-ui/icons/Search';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Hidden from '@material-ui/core/Hidden';
+import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   mainTitle: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    textTransform: "capitalize",
-    marginLeft: theme.spacing(1)
+    textTransform: 'capitalize',
+    marginLeft: theme.spacing(1),
   },
   menuButtonText: {
-    color: "white",
-    fontSize: 14
+    color: 'white',
+    fontSize: 14,
   },
   textBackground: {
     marginLeft: theme.spacing(0.5),
-    padding: theme.spacing(0.5, 1)
+    padding: theme.spacing(0.5, 1),
   },
   /** Pride specific styles */
   prideBackground: {
@@ -40,19 +41,19 @@ const styles = theme => ({
         #00811f 66%,
         #0044ff 66%,
         #0044ff 86%,
-        #760089 86%) no-repeat`
+        #760089 86%) no-repeat`,
   },
   prideTextBackground: {
-    backgroundColor: "rgba(0, 0, 0, 0.25)"
-  }
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+  },
 });
 
 const Topbar = ({ pride, classes }) => {
   const backgroundClass = pride ? classes.prideBackground : null;
   const textBackgroundClass = [
     classes.textBackground,
-    pride ? classes.prideTextBackground : null
-  ].join(" ");
+    pride ? classes.prideTextBackground : null,
+  ].join(' ');
 
   return (
     <AppBar position="sticky" className={backgroundClass}>
@@ -95,6 +96,17 @@ const Topbar = ({ pride, classes }) => {
         <Button
           className={textBackgroundClass}
           component={Link}
+          to="/about"
+          color="inherit"
+        >
+          <InfoIcon />
+          <Hidden xsDown>
+            <Typography className={classes.menuButtonText}>About</Typography>
+          </Hidden>
+        </Button>
+        <Button
+          className={textBackgroundClass}
+          component={Link}
           to="/settings"
           color="inherit"
         >
@@ -108,8 +120,8 @@ const Topbar = ({ pride, classes }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  pride: state.settings.pride
+const mapStateToProps = (state) => ({
+  pride: state.settings.pride,
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(Topbar));

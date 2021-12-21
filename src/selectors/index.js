@@ -1,11 +1,7 @@
-import { createSelector } from "reselect";
-import { get, uniq, compact } from "lodash";
+import { createSelector } from 'reselect';
+import { get } from 'lodash';
 
-import {
-  applyFilters,
-  applyFilter,
-  filtersFromUserOptions
-} from "../utilities/filter";
+import { applyFilters, applyFilter, filtersFromUserOptions } from '../utilities/filter';
 
 // TODO: Use these in the `mapStateToProps` functions accross application
 // rather than accessing state directly?
@@ -14,11 +10,9 @@ export const allGlassesSelector = state => state.db.glasses;
 const barSelector = state => state.bar;
 const favouritesSelector = state => state.favourites;
 
-const currentSlugFromUrlSelector = (_, props) =>
-  get(props, "match.params.slug");
+const currentSlugFromUrlSelector = (_, props) => get(props, 'match.params.slug');
 
-const currentSlugFromCocktailPropSelector = (_, props) =>
-  get(props, "cocktail.slug");
+const currentSlugFromCocktailPropSelector = (_, props) => get(props, 'cocktail.slug');
 
 // figures out the cocktail in question from either the page URL
 // or, if that doesn't exist, it looks for a "cocktail" prop and
@@ -52,8 +46,7 @@ export const currentCocktailSelector = createSelector(
 export const filteredCocktailsSelector = createSelector(
   allCocktailsSelector,
   filtersSelector,
-  (cocktails, filter) =>
-    applyFilters(cocktails, filter).sort((a, b) => (a.name > b.name ? 1 : -1))
+  (cocktails, filter) => applyFilters(cocktails, filter).sort((a, b) => (a.name > b.name ? 1 : -1))
 );
 
 // makeableCocktailsSelector
@@ -63,8 +56,8 @@ export const makeableCocktailsSelector = createSelector(
   barSelector,
   (cocktails, bar) =>
     applyFilter(cocktails, {
-      rule: "makeableFrom",
-      ingredients: bar
+      rule: 'makeableFrom',
+      ingredients: bar,
     })
 );
 
@@ -72,5 +65,5 @@ export const makeableCocktailsSelector = createSelector(
 // Derives an array of all the categories
 export const allCategoriesSelector = createSelector(
   allCocktailsSelector,
-  cocktails => compact(uniq(cocktails.map(c => c.category)))
+  cocktails => [...new Set(cocktails.map(c => c.category))].filter(() => true)
 );

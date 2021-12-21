@@ -1,28 +1,23 @@
-import React, { useState } from "react";
-import { Chip, TextField, InputAdornment } from "@material-ui/core";
-import { removeOrAddItemFromArray } from "../utilities/util";
-import map from "lodash/map";
-import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import SearchIcon from "@material-ui/icons/Search";
+import React, { useState } from 'react';
+import { Chip, TextField, InputAdornment } from '@material-ui/core';
+import { removeOrAddItemFromArray } from '../utilities/util';
+import map from 'lodash/map';
+import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => ({
   chip: {
-    margin: theme.spacing() / 2
+    margin: theme.spacing() / 2,
   },
   searchField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300
-  }
+    width: 300,
+  },
 });
 
-const IngredientPicker = ({
-  allIngredients,
-  selectedIngredients,
-  onIngredientsChange,
-  classes
-}) => {
+const IngredientPicker = ({ allIngredients, selectedIngredients, onIngredientsChange, classes }) => {
   const [searchTerm, updateSearchTerm] = useState(null);
 
   return (
@@ -39,29 +34,20 @@ const IngredientPicker = ({
             <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
-          )
+          ),
         }}
       />
-      <br style={{ clear: "both" }} />
+      <br style={{ clear: 'both' }} />
       {map(allIngredients, (ingredientDetail, ingredientName) => {
-        if (
-          searchTerm &&
-          !ingredientName.toLowerCase().includes(searchTerm.toLowerCase())
-        ) {
+        if (searchTerm && !ingredientName.toLowerCase().includes(searchTerm.toLowerCase())) {
           return null;
         }
         return (
           <Chip
             key={ingredientName}
-            color={
-              selectedIngredients.includes(ingredientName)
-                ? "primary"
-                : "default"
-            }
+            color={selectedIngredients.includes(ingredientName) ? 'primary' : 'default'}
             onClick={e => {
-              onIngredientsChange(
-                removeOrAddItemFromArray(ingredientName, selectedIngredients)
-              );
+              onIngredientsChange(removeOrAddItemFromArray(ingredientName, selectedIngredients));
             }}
             label={ingredientName}
             className={classes.chip}
@@ -73,7 +59,7 @@ const IngredientPicker = ({
 };
 
 const mapStateToProps = state => ({
-  allIngredients: state.db.ingredients
+  allIngredients: state.db.ingredients,
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(IngredientPicker));

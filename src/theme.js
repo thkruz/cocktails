@@ -19,7 +19,7 @@ export const colors = {
 /**
  * override theme defaults here.
  */
-function createTheme(color, theme) {
+const createTheme = (color, theme) => {
   return createMuiTheme({
     palette: {
       primary: colors[`${color}`],
@@ -45,7 +45,7 @@ function createTheme(color, theme) {
       },
     },
   });
-}
+};
 
 const mapStateToProps = (state) => ({
   color: state.settings.color,

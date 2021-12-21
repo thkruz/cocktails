@@ -6,7 +6,7 @@ import Definition from './Definition';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
-const styles = (theme) => ({
+const styles = theme => ({
   definitions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(5),
@@ -51,9 +51,7 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
         <Definition title="Garnish" description={garnish} />
         {!vegan && <Definition title="Vegan" description={'Non-vegan'} />}
 
-        {enriched && enrichment.ibaCategory && (
-          <Definition title="IBA Category" description={enrichment.ibaCategory} />
-        )}
+        {enriched && enrichment.ibaCategory && <Definition title="IBA Category" description={enrichment.ibaCategory} />}
       </div>
       <Paper className={classes.cocktailDetailPaper}>
         {description && (
@@ -86,7 +84,7 @@ const CocktailPage = ({ cocktail, allGlasses, classes }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   allGlasses: allGlassesSelector(state),
 });
 
