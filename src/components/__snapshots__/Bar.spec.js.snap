@@ -963,6 +963,29 @@ exports[`does not explode when rendered 1`] = `
         <span
           className="MuiChip-label"
         >
+          Italicus
+        </span>
+      </div>
+      <div
+        className="MuiButtonBase-root MuiChip-root IngredientPicker-chip-3 MuiChip-clickable"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <span
+          className="MuiChip-label"
+        >
           Kirsch
         </span>
       </div>
@@ -1854,63 +1877,6 @@ exports[`does not explode when rendered 1`] = `
                 >
                   <div>
                     <span>
-                      Gin
-                    </span>
-                    <button
-                      aria-label="Add"
-                      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onDragLeave={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      tabIndex={0}
-                      type="button"
-                    >
-                      <span
-                        className="MuiIconButton-label"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                  </div>
-                </th>
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
-                >
-                  21
-                </td>
-              </tr>
-              <tr
-                className="MuiTableRow-root"
-                role={null}
-              >
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body PopularIngredients-cocktailNameContainer-10"
-                  role="cell"
-                  scope="row"
-                >
-                  <div>
-                    <span>
                       Syrup
                     </span>
                     <button
@@ -1953,64 +1919,7 @@ exports[`does not explode when rendered 1`] = `
                   aria-sort={null}
                   className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
                 >
-                  20
-                </td>
-              </tr>
-              <tr
-                className="MuiTableRow-root"
-                role={null}
-              >
-                <th
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body PopularIngredients-cocktailNameContainer-10"
-                  role="cell"
-                  scope="row"
-                >
-                  <div>
-                    <span>
-                      Lemon juice
-                    </span>
-                    <button
-                      aria-label="Add"
-                      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onDragLeave={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      tabIndex={0}
-                      type="button"
-                    >
-                      <span
-                        className="MuiIconButton-label"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                  </div>
-                </th>
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
-                >
-                  18
+                  1
                 </td>
               </tr>
               <tr
@@ -2067,7 +1976,7 @@ exports[`does not explode when rendered 1`] = `
                   aria-sort={null}
                   className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
                 >
-                  17
+                  1
                 </td>
               </tr>
               <tr
@@ -2082,7 +1991,7 @@ exports[`does not explode when rendered 1`] = `
                 >
                   <div>
                     <span>
-                      Vodka
+                      White rum
                     </span>
                     <button
                       aria-label="Add"
@@ -2124,7 +2033,121 @@ exports[`does not explode when rendered 1`] = `
                   aria-sort={null}
                   className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
                 >
-                  16
+                  1
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root"
+                role={null}
+              >
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body PopularIngredients-cocktailNameContainer-10"
+                  role="cell"
+                  scope="row"
+                >
+                  <div>
+                    <span>
+                      Lillet Blonde
+                    </span>
+                    <button
+                      aria-label="Add"
+                      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <span
+                        className="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </th>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                >
+                  1
+                </td>
+              </tr>
+              <tr
+                className="MuiTableRow-root"
+                role={null}
+              >
+                <th
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body PopularIngredients-cocktailNameContainer-10"
+                  role="cell"
+                  scope="row"
+                >
+                  <div>
+                    <span>
+                      Italicus
+                    </span>
+                    <button
+                      aria-label="Add"
+                      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onDragLeave={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      tabIndex={0}
+                      type="button"
+                    >
+                      <span
+                        className="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </th>
+                <td
+                  aria-sort={null}
+                  className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                >
+                  1
                 </td>
               </tr>
             </tbody>

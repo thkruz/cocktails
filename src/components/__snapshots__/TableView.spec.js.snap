@@ -78,7 +78,7 @@ exports[`does not explode when rendered 1`] = `
           aria-sort={null}
           className="MuiTableCell-root MuiTableCell-body"
         >
-          Vesper
+          Hail Caesar
         </td>
         <td
           aria-sort={null}
@@ -123,7 +123,7 @@ exports[`does not explode when rendered 1`] = `
           <a
             aria-disabled={false}
             className="MuiButtonBase-root MuiButton-root MuiButton-text CocktailActions-button-2 MuiButton-textSecondary MuiButton-textSizeLarge MuiButton-sizeLarge"
-            href="/cocktails/vesper"
+            href="/cocktails/hail-caesar"
             onBlur={[Function]}
             onClick={[Function]}
             onDragLeave={[Function]}

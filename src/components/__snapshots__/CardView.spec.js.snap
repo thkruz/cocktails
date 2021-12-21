@@ -15,7 +15,7 @@ exports[`does not explode when rendered 1`] = `
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiCardActionArea-root CocktailCard-cardMain-4"
-      href="/cocktails/vesper"
+      href="/cocktails/hail-caesar"
       onBlur={[Function]}
       onClick={[Function]}
       onDragLeave={[Function]}
@@ -68,7 +68,7 @@ exports[`does not explode when rendered 1`] = `
             <h1
               className="CocktailCard-title-6"
             >
-              Vesper
+              Hail Caesar
             </h1>
           </span>
           <span
@@ -77,7 +77,7 @@ exports[`does not explode when rendered 1`] = `
             <span
               className="CocktailCard-subHeader-7"
             >
-              Before Dinner Cocktail
+              Military Themed
             </span>
           </span>
         </div>
@@ -93,7 +93,7 @@ exports[`does not explode when rendered 1`] = `
               className="MuiTypography-root MuiTypography-body1"
             >
               <span>
-                6 cl
+                2.95 cl
                  
                 <strong
                   aria-describedby={null}
@@ -104,9 +104,9 @@ exports[`does not explode when rendered 1`] = `
                   onMouseOver={[Function]}
                   onTouchEnd={[Function]}
                   onTouchStart={[Function]}
-                  title="40% abv"
+                  title="40% abv, juniper"
                 >
-                  Gin
+                  London Dry Gin
                 </strong>
               </span>
             </p>
@@ -116,7 +116,7 @@ exports[`does not explode when rendered 1`] = `
               className="MuiTypography-root MuiTypography-body1"
             >
               <span>
-                1.5 cl
+                2.95 cl
                  
                 <strong
                   aria-describedby={null}
@@ -127,9 +127,9 @@ exports[`does not explode when rendered 1`] = `
                   onMouseOver={[Function]}
                   onTouchEnd={[Function]}
                   onTouchStart={[Function]}
-                  title="40% abv"
+                  title="40% abv, bergamot"
                 >
-                  Vodka
+                  Italicus
                 </strong>
               </span>
             </p>
@@ -139,7 +139,7 @@ exports[`does not explode when rendered 1`] = `
               className="MuiTypography-root MuiTypography-body1"
             >
               <span>
-                0.75 cl
+                2.95 cl
                  
                 <strong
                   aria-describedby={null}
@@ -162,6 +162,11 @@ exports[`does not explode when rendered 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
         >
+          Non-IBA
+        </p>
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+        >
           <svg
             aria-hidden={true}
             className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
@@ -174,22 +179,6 @@ exports[`does not explode when rendered 1`] = `
           </svg>
            
           Martini
-        </p>
-        <p
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"
-            />
-          </svg>
-           
-          Lemon twist
         </p>
       </div>
       <span
@@ -242,7 +231,7 @@ exports[`does not explode when rendered 1`] = `
       <a
         aria-disabled={false}
         className="MuiButtonBase-root MuiButton-root MuiButton-text CocktailActions-button-11 MuiButton-textSecondary MuiButton-textSizeLarge MuiButton-sizeLarge"
-        href="/cocktails/vesper"
+        href="/cocktails/hail-caesar"
         onBlur={[Function]}
         onClick={[Function]}
         onDragLeave={[Function]}
